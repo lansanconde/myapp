@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:mt="http://java.sun.com/jsf/composite/mytags">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+
+        <mt:alert title="Une alerte">
+            <span>C'est grave ?</span>
+        </mt:alert>
+
+        <mt:alert>
+            <span>C'est vraiment grave ?</span>
+        </mt:alert>
+
+    </ui:define>
+</ui:composition>
+
+</html>
