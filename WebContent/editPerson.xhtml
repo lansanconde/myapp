@@ -10,61 +10,73 @@
 <ui:define name="content">
 <f:view>
 
-    <h1>Person form</h1>
+    <h1>Person form  
+    	<p> Now = <h:outputText id="now" value="#{ajaxBean.now}" /></p>
+    </h1>
     <h:form id="test">
     	
 	        <c:set var="pers" value="#{person.thePerson}" />
+	        
 	        <div class="form-group">
 	            <label for="name">Name:</label>
-	            <h:inputText id="name" value="#{pers.name}" styleClass="form-control"
-				    required="true" requiredMessage="Le nom est obligatoire">
-				   
-				</h:inputText>
-	            <h:message styleClass="label label-danger" for="name" style="color:blue" />
+	            <h:inputText id="name" value="#{pers.name}">
+		        <f:validateLength minimum="2" maximum="8" />
+		    </h:inputText>
+		    <br/>
+		    <h:message id="messageName" for="name" style="color:red"/>
 	        </div>
 	        
 	        <div class="form-group">
 	            <label for="firstName">First Name:</label>
-	            <h:inputText id="firstName" value="#{pers.firstName}"
-	                styleClass="form-control" required="true"
-	                size="70" />
-	            <h:message styleClass="label label-danger" for="firstName" style="color:blue" />
+	            <h:inputText id="firstName" value="#{pers.firstName}">
+		        <f:validateLength minimum="3" maximum="20" />
+		    </h:inputText>
+		     <br/>
+		    <h:message id="messageFirstName" for="firstName" style="color:red"/>
 	        </div>
-		
+	        
 	        <div class="form-group">
 	            <label for="email">Email:</label>
-	            <h:inputTextarea id="email" value="#{pers.email}"
-	                styleClass="form-control" required="true" />
-	            <h:message styleClass="label label-danger" for="email" style="color:blue" />
+	            <h:inputText id="email" value="#{pers.email}">
+		        <f:validateLength minimum="4" maximum="20" />
+		    </h:inputText>
+		     <br/>
+		    <h:message id="messageEmail" for="email" style="color:red"/>
 	        </div>
-	        
 	        <div class="form-group">
 	            <label for="webSite">Web Site:</label>
-	            <h:inputTextarea id="webSite" value="#{pers.webSite}"
-	                styleClass="form-control" required="true"/>
-	            <h:message styleClass="label label-danger" for="webSite" style="color:blue" />
+	            <h:inputText id="webSite" value="#{pers.webSite}">
+		        <f:validateLength minimum="0" maximum="20" />
+		    </h:inputText>
+		     <br/>
+		    <h:message id="messageWebSite" for="webSite" style="color:red"/>
 	        </div>
-	        
 	        
 	        <div class="form-group">
 	            <label for="birthDay">BirthDay:</label>
-	            <h:inputTextarea id="birthDay" value="#{pers.birthDay}"
-	                styleClass="form-control" required="true"/>
-	            <h:message styleClass="label label-danger" for="birthDay" style="color:blue" />
+	            <h:inputText id="birthDay" value="#{pers.birthDay}">
+		        <f:validateLength minimum="2" maximum="10" />
+		    </h:inputText>
+		     <br/>
+		    <h:message id="messageBirthDay" for="birthDay" style="color:red"/>
 	        </div>
 	        
 	        <div class="form-group">
-	            <label for="password">Password:</label>
-	            <h:inputTextarea id="password" value="#{pers.password}"
-	                styleClass="form-control" required="true"/>
-	            <h:message styleClass="label label-danger" for="password" style="color:blue" />
+	            <label for="password">PassWord:</label>
+	            <h:inputText id="password" value="#{pers.password}">
+		        <f:validateLength minimum="3" maximum="8" />
+		    </h:inputText>
+		     <br/>
+		    <h:message id="messagePassword" for="password" style="color:red"/>
 	        </div>
 			
 	        <div class="form-group">
-	            <h:commandButton action="#{person.save()}"
-	                styleClass="btn btn-primary" value="Save" />
+	        		<h:commandButton value="Save" action="#{person.save()}"
+        					styleClass="btn btn-primary">
+        				<f:ajax execute="@form" render="@form" />
+    				</h:commandButton>
 	            <span> </span>
-	            <h:link styleClass="btn btn-info" outcome="persons" value="Quit" />
+	            <h:link styleClass="btn btn-info" outcome="hello" value="Quit" />
 	        </div>
     </h:form>
 

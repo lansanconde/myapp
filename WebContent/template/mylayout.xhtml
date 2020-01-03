@@ -44,6 +44,9 @@
                 id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#">Link</a></li>
+                     <li><h:link styleClass="btn btn" outcome="accueil" value="Accueil" /></li>
+                    <li><h:link styleClass="btn btn" outcome="login" value="Connexion" /></li>
+                    <li><h:link styleClass="btn btn" outcome="#{person.logout()}" value="Deconnexion" /></li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown" role="button" aria-haspopup="true"
                         aria-expanded="false">Dropdown <span class="caret"></span></a>

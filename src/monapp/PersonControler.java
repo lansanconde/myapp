@@ -139,7 +139,7 @@ public class PersonControler{
 	     originalURL = (String) externalContext.getRequestMap().get(RequestDispatcher.FORWARD_REQUEST_URI);
 	     
         System.out.println("Create first person ");
-      /* if (tm.getCounterPerson() == 0) {
+        
             Person p1 = new Person();
         	p1.setBirthDay("18/02/1989");
         	p1.setEmail("latty@gmail.com");
@@ -155,9 +155,6 @@ public class PersonControler{
         	
             tm.CreatePerson(user, p1);  
             
-	       
-        }  */
-       
        
     }
 	/*
