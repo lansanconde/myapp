@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+        <f:view>
+            <div class="jumbotron">  
+            	<h1>
+            		Applicaton de Gestion des CVs
+            	</h1>         
+                <p>
+                    <h:link outcome="persons" styleClass="btn btn-info">
+                        <span>lien pour accéder au gestionnaire</span>
+                    </h:link>
+                </p>
+            </div>
+        </f:view>
+    </ui:define>
+</ui:composition>
+
+</html>

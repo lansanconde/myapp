@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/mylayout.xhtml">
+<ui:define name="content">
+<f:view>
+
+    <h1>Page de connexion </h1>
+    <h:form>
+
+	
+	<div class="form-group">
+		<label for="personId">Id:</label>
+    	<h:inputText id="personId" value="#{person.personId}" 
+				   required="true">
+		</h:inputText>
+		<h:message styleClass="label label-danger" for="personId" style="color:blue" />
+   		 <br />
+	</div>
+	
+	<div class="form-group">
+		<label for="password">Pass word:</label>
+    	<h:inputSecret id="password" value="#{person.password}" 
+				   required="true" />
+		<h:message styleClass="label label-danger" for="password" style="color:blue" />
+   		 <br />
+	</div>
+
+	 <div class="form-group">
+		<h:commandButton action="#{person.login()}"
+			styleClass="btn btn-primary" value="Login" />
+		<span> </span>
+		<h:link styleClass="btn btn-info" outcome="persons" value="Quit" />
+	</div>
+
+    
+</h:form>
+
+</f:view>
+</ui:define>
+</ui:composition>
+
+</html>
+
+

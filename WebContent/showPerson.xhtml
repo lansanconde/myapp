@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+        <f:view>
+            <c:set var="pers" value="#{person.thePerson}" />
+            <div class="jumbotron">
+                <h1>Person #{pers.name}</h1>
+                <p>Id: #{pers.id}</p>
+                <p>Name: #{pers.name}</p>
+                <p>First Name: #{pers.firstName}</p>
+                <p>Email: #{pers.email}</p>
+                <p>PassWord: #{pers.password}</p>
+                <p>WebSite: #{pers.webSite}</p>
+                <p>BirthDay: #{pers.birthDay}</p>
+           
+                <p>
+                    <h:link outcome="persons" styleClass="btn btn-info">
+                        <span>List of Person</span>
+                    </h:link>
+                </p>
+            </div>
+            <h:form>
+			   	 <p>
+			        <h:commandLink action="#{person.checkModifyPerson}" styleClass="btn btn-warning" value="Modifier">
+			           
+			        </h:commandLink>
+			    </p>
+			    <p>
+			        <h:commandLink value="Remove" styleClass="btn btn-danger"
+			            action="#{person.removePerson(pers.id)}" />
+			 </p>
+			</h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/mylayout.xhtml">
+<ui:define name="content">
+<f:view>
+
+    <h1>Person form</h1>
+    <h:form id="test">
+    	
+	        <c:set var="pers" value="#{person.thePerson}" />
+	        <div class="form-group">
+	            <label for="name">Name:</label>
+	            <h:inputText id="name" value="#{pers.name}" styleClass="form-control"
+				    required="true" requiredMessage="Le nom est obligatoire">
+				   
+				</h:inputText>
+	            <h:message styleClass="label label-danger" for="name" style="color:blue" />
+	        </div>
+	        
+	        <div class="form-group">
+	            <label for="firstName">First Name:</label>
+	            <h:inputText id="firstName" value="#{pers.firstName}"
+	                styleClass="form-control" required="true"
+	                size="70" />
+	            <h:message styleClass="label label-danger" for="firstName" style="color:blue" />
+	        </div>
+		
+	        <div class="form-group">
+	            <label for="email">Email:</label>
+	            <h:inputTextarea id="email" value="#{pers.email}"
+	                styleClass="form-control" required="true" />
+	            <h:message styleClass="label label-danger" for="email" style="color:blue" />
+	        </div>
+	        
+	        <div class="form-group">
+	            <label for="webSite">Web Site:</label>
+	            <h:inputTextarea id="webSite" value="#{pers.webSite}"
+	                styleClass="form-control" required="true"/>
+	            <h:message styleClass="label label-danger" for="webSite" style="color:blue" />
+	        </div>
+	        
+	        
+	        <div class="form-group">
+	            <label for="birthDay">BirthDay:</label>
+	            <h:inputTextarea id="birthDay" value="#{pers.birthDay}"
+	                styleClass="form-control" required="true"/>
+	            <h:message styleClass="label label-danger" for="birthDay" style="color:blue" />
+	        </div>
+	        
+	        <div class="form-group">
+	            <label for="password">Password:</label>
+	            <h:inputTextarea id="password" value="#{pers.password}"
+	                styleClass="form-control" required="true"/>
+	            <h:message styleClass="label label-danger" for="password" style="color:blue" />
+	        </div>
+			
+	        <div class="form-group">
+	            <h:commandButton action="#{person.save()}"
+	                styleClass="btn btn-primary" value="Save" />
+	            <span> </span>
+	            <h:link styleClass="btn btn-info" outcome="persons" value="Quit" />
+	        </div>
+    </h:form>
+
+</f:view>
+</ui:define>
+</ui:composition>
+
+</html>

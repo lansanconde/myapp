@@ -1,0 +1,94 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+
+        <h1>Ajax Test</h1>
+        <p>Now = <h:outputText id="now" value="#{ajaxBean.now}" /></p>
+        <h2>No AJAX</h2>
+        <h:form>
+            <h:inputText id="text" value="#{ajaxBean.text}" />
+            <h:commandButton value="Show" />
+            <br />
+            <h:outputText id="affichage" value="#{ajaxBean.text}" />
+        </h:form>
+        <h2>AJAX 1</h2>
+		<h:form>
+		    <h:inputText id="text" value="#{ajaxBean.text}" />
+		    <h:commandButton value="Show">
+		        <f:ajax execute="text" render="@all" />
+		    </h:commandButton>
+		    <br />
+		    <h:outputText id="affichage" value="#{ajaxBean.text}" />
+		</h:form>
+		<h2>AJAX Events</h2>
+		<h:form>
+		    <h:inputText id="text" value="#{ajaxBean.text}">
+		        <f:ajax event="valueChange" render="affichage" />
+		        <f:ajax event="dblclick" render="affichage"
+   			listener="#{ajaxBean.toUpper}" />
+		    </h:inputText>
+		    <br />
+		    <h:outputText id="affichage" value="#{ajaxBean.text}" />
+		</h:form>
+		<h2>AJAX Validation on submit</h2>
+		<h:form>
+		    <h:inputText id="text4" value="#{ajaxBean.text}">
+		        <f:validateLength minimum="3" maximum="8" />
+		    </h:inputText>
+		    <h:message id="messageText4" for="text4" />
+		    <br />
+		    <h:commandButton value="Ok">
+		        <f:ajax execute="text4" render="@form" />
+		    </h:commandButton>
+		</h:form>
+		
+		<h2>AJAX Validation on event</h2>
+		<h:form>
+		    <h:inputText id="text" value="#{ajaxBean.text}">
+		        <f:validateLength minimum="3" maximum="8" />
+		        <f:ajax event="keyup" render="messageText" />
+		    </h:inputText>
+		    <h:message id="messageText" for="text" />
+		</h:form>
+		
+	<!--  Traitement complete en Ajax-->
+	<h2>CRUD in AJAX</h2>
+	<h:form>
+    <!-- afficher les villes si elles existent -->
+    <h:panelGroup rendered="#{ajaxBean.cities.size() > 0}">
+        <p>Cities :</p>
+        <table class="table">
+            <ui:repeat var="city" varStatus="s" value="#{ajaxBean.cities}">
+                <tr>
+                    <td><h:outputText value="#{city}" /></td>
+                    <td><h:commandButton value="Sup"
+                            action="#{ajaxBean.removeCity(s.index)}"
+                            styleClass="btn btn-success btn-xs">
+                            <f:ajax execute="@this" render="@form" />
+                        </h:commandButton></td>
+                </tr>
+            </ui:repeat>
+        </table>
+    </h:panelGroup>
+
+    <!-- formulaire pour ajouter une ville -->
+    <div class="form-group">
+        <h:inputText id="city" value="#{ajaxBean.text}"
+            styleClass="form-control">
+            <f:validateLength minimum="3" maximum="8" />
+        </h:inputText>
+        <h:message id="messageCity" for="city"
+            styleClass="label label-danger" />
+    </div>
+    <h:commandButton value="Add" action="#{ajaxBean.addCity()}"
+        styleClass="btn btn-primary">
+        <f:ajax execute="@this city" render="@form" />
+    </h:commandButton>
+	</h:form>
+    </ui:define>
+</ui:composition>
+</html>

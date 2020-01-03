@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+        <f:view>
+			<c:set var="pers" value="#{person.theCv}" />
+            <div class="jumbotron">
+                <h1>Curriculum vitae de
+                	<h:outputText value=" #{pers.getPerson().getName()}"/>
+                </h1>
+                <p>Title: #{pers.title}</p>
+                <p>Year: #{pers.year}</p>
+                <p>Expérience Prof. : #{pers.experiencePro}</p>
+                <p>Formation: #{pers.formation}</p>
+                <p>Projets: #{pers.projects}</p>
+                <p>Description: #{pers.description}</p>
+				<p>Web address: #{pers.addressWeb}</p>
+				<p>Other: #{pers.other}</p>
+           
+                <p>
+                    <h:link outcome="persons" styleClass="btn btn-info">
+                        <span>List of CV</span>
+                    </h:link>
+                </p>
+            </div>
+            <h:form>
+			   	 <p>
+			        <h:commandLink action="#{person.checkModifyCv}" styleClass="btn btn-warning" value="Modifier">
+			           
+			        </h:commandLink>
+			    </p>
+			    <p>
+			        <h:commandLink action="#{person.removeCv(pers.id)}" styleClass="btn btn-danger" value="Remove">
+			           
+			        </h:commandLink>
+			    </p>
+			</h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+        <f:view>
+
+            <h1>List of Persons (with JSTL)</h1>
+            <h:form>
+                <table class="table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>First Name</th>
+                        <th>Email</th>
+                        <th>PassWord</th>
+                        <th>WebSite</th>
+						<th>BirthDay</th>
+						<th>CV</th>
+						<th>Cooptation</th>
+                    </tr>
+                      <h:dataTable value="#{person.persons}" var="o"
+						   	 styleClass="table table-hover" headerClass="danger"
+						    footerClass="danger" rowClasses="success,warning">
+						
+						    <h:column>
+						        <f:facet name="header">Id</f:facet>
+						        <h:outputText value="#{o.id}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">Name</f:facet>
+						        <h:outputText value="#{o.name}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">First Name</f:facet>
+						        <h:outputText value="#{o.firstName}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">Email</f:facet>
+						        <h:outputText value="#{o.email}" />
+						    </h:column>
+						    
+						    <h:column>
+						        <f:facet name="header">PassWord</f:facet>
+						        <h:outputText value="#{o.password}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">WebSite</f:facet>
+						        <h:outputText value="#{o.webSite}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">BirthDay</f:facet>
+						        <h:outputText value="#{o.birthDay}" />
+							</h:column>
+							
+						     <h:column>
+						        <f:facet name="header">CV</f:facet>
+						        <h:commandLink value="Show" styleClass="btn btn-primary btn-xs"
+						            action="#{person.showCvWithPesonId(o.id)}" />
+							</h:column>
+							 <h:column>
+						        <f:facet name="header">Coopt</f:facet>
+						        <h:commandLink value="List" styleClass="btn btn-primary btn-xs"
+						            action="#{person.showCooptationList(o.id)}" />
+							</h:column>
+							
+						</h:dataTable>
+						                   
+                </table>
+                <p>
+                    <h:commandButton styleClass="btn btn-success"
+                        action="#{person.newPerson()}" value="New Person" />
+                </p>
+			</h:form>
+			<!--cette partie gère l'affichage des cvs-->
+			<h1>List of CVs (with JSTL)</h1>
+            <h:form>
+                <table class="table">
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Experiences Prof.</th>
+                        <th>Formations</th>
+                        <th>Description</th>
+						<th>Web adress</th>
+						<th>Others</th>
+                    </tr>
+                      <h:dataTable value="#{person.cvs}" var="o"
+						   	 styleClass="table table-hover" headerClass="danger"
+						    footerClass="danger" rowClasses="success,warning">
+						
+						    <h:column>
+						        <f:facet name="header">Id</f:facet>
+						        <h:outputText value="#{o.id}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header"><Title></Title></f:facet>
+						        <h:outputText value="#{o.title}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">Year</f:facet>
+						        <h:outputText value="#{o.year}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">Experience Prof.</f:facet>
+						        <h:outputText value="#{o.experiencePro}" />
+						    </h:column>
+						    
+						    <h:column>
+						        <f:facet name="header">Formation</f:facet>
+						        <h:outputText value="#{o.formation}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">Projets</f:facet>
+						        <h:outputText value="#{o.projects}" />
+						    </h:column>
+						    <h:column>
+						        <f:facet name="header">Description</f:facet>
+						        <h:outputText value="#{o.description}" />
+							</h:column>
+							
+							<h:column>
+						        <f:facet name="header">Web address</f:facet>
+						        <h:outputText value="#{o.addressWeb}" />
+							</h:column>
+							
+							<h:column>
+						        <f:facet name="header">Others</f:facet>
+						        <h:outputText value="#{o.other}" />
+						    </h:column>
+						    
+						    <h:column>
+						        <f:facet name="header">Action</f:facet>
+						        <h:commandLink value="Show" styleClass="btn btn-primary btn-xs"
+						            action="#{person.showCv(o.id)}" />
+							</h:column>
+		
+						</h:dataTable>
+						                   
+                </table>
+                <p>
+                    <h:commandButton styleClass="btn btn-success"
+                        action="#{person.newCv()}" value="New CV" />
+                </p>
+            </h:form>
+
+        </f:view>
+    </ui:define>
+</ui:composition>
+
+</html>

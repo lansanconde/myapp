@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template/mylayout.xhtml">
+        <ui:define name="content">
+        	<h1>
+        		<h:outputText style="color:green"  value="#{sessionScope['user'].getAdmin()}" />
+        	</h1>
+            <h1>
+                <h:outputText value="#{messages.helloWorld}" />
+                
+            </h1>
+        </ui:define>
+        <ui:define name="title">First App</ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/mylayout.xhtml">
+    <ui:define name="content">
+
+        <h1>Test Form</h1>
+        <h:form id="formtest">
+            <h:panelGrid columns="2">
+				<!-- Validation champ de text -->
+               <h:outputText value="Input text&#160;:" />
+				<h:panelGroup>
+				    <h:inputText id="text" value="#{formTest.text}" required="true"
+				        requiredMessage="Le nom est obligatoire">
+				        <f:validateLength minimum="3" maximum="15" />
+				        <f:validator for="text" validatorId="myconstraints.Hello" />
+				    </h:inputText>
+				    <h:message errorClass="error" for="text" />
+				</h:panelGroup>
+				<!-- Conversion des dates-->
+				<h:outputText value="Input date&#160;:" />
+				<h:panelGroup>
+				    <h:inputText id="birthday" value="#{formTest.birthday}"
+				        label="Birthday">
+				        <f:convertDateTime pattern="dd-MM-yyyy" />
+				    </h:inputText>
+				    <h:message errorClass="error" for="birthday" />
+				</h:panelGroup>
+	           <h:commandButton value="Submit" action="#{formTest.submit}"
+   					 actionListener="#{formTest.myListener}">
+   					 <f:setPropertyActionListener target="#{formTest.parameter}"
+     				   value="Fin" />
+   					 <f:attribute name="forActionlistener" value="Hello" />
+   					 <f:actionListener type="monapp.MyActionListener" />
+				</h:commandButton>
+				<span></span>
+
+            </h:panelGrid>
+        </h:form>
+        <h1>
+        	<h:outputText value="Output date&#160;:" />
+				<h:outputText value="#{formTest.birthday}">
+       			 <f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:outputText>
+        
+        </h1>
+
+    </ui:define>
+</ui:composition>
+</html>
